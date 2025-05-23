@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>植物構造 AR 學習</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>植物構造 AR 學習</title>
 
-  <!-- model-viewer 標準元件 -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<!-- model-viewer 標準元件 -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Microsoft JhengHei", sans-serif;
-      text-align: center;
-      background-color: #f4f4f4;
-    }
-    h2 {
-      margin-top: 20px;
-    }
-    #info {
-      margin-top: 10px;
-      padding: 10px;
-      font-size: 18px;
-      color: #333;
-      background-color: #e0f7fa;
-      border-radius: 6px;
-      width: 90%;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    model-viewer {
-      width: 100%;
-      height: 500px;
-    }
-  </style>
+<style>
+body {
+margin: 0;
+font-family: "Microsoft JhengHei", sans-serif;
+text-align: center;
+background-color: #f0f8f5;
+}
+h2 {
+margin-top: 20px;
+}
+#info {
+margin-top: 10px;
+padding: 10px;
+font-size: 18px;
+color: #333;
+background-color: #d9fce3;
+border-radius: 8px;
+width: 90%;
+max-width: 500px;
+margin-left: auto;
+margin-right: auto;
+}
+model-viewer {
+width: 100%;
+height: 500px;
+}
+</style>
 </head>
 
 <body>
-  <h2>植物構造互動學習</h2>
+<h2>植物構造互動學習</h2>
 
-  <!-- 替換為你的模型網址 (.glb) -->
-  <model-viewer
-    src="https://modelviewer.dev/shared-assets/models/Plant.glb"
-    alt="植物模型"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    camera-controls
-    auto-rotate
-    exposure="1"
-    shadow-intensity="1"
-    id="plantViewer"
-  >
-  </model-viewer>
+<!-- 嵌入 Indoor Low Poly Plant 的 GLB 模型 -->
+<model-viewer
+src="indoor__low_poly_plant_free_3d_model.glb"
+alt="植物模型"
+ar
+ar-modes="scene-viewer webxr quick-look"
+camera-controls
+auto-rotate
+exposure="1"
+shadow-intensity="1"
+id="plantViewer"
+>
+</model-viewer>
 
-  <!-- 顯示說明文字的區塊 -->
-  <div id="info">點擊模型畫面會隨機顯示植物構造說明。</div>
+<div id="info">點擊模型畫面會顯示植物構造的說明。</div>
 
-  <script>
-    const info = document.getElementById('info');
-    const viewer = document.getElementById('plantViewer');
+<script>
+const info = document.getElementById('info');
+const viewer = document.getElementById('plantViewer');
 
-    // 點擊整個 model-viewer（簡易模擬部位互動）
-    viewer.addEventListener('click', () => {
-      const parts = [
-        { name: '葉子', desc: '葉子是進行光合作用的重要器官。' },
-        { name: '根', desc: '根負責吸收水分與養分。' },
-        { name: '莖', desc: '莖支撐植物，並輸送水分與養分。' },
-        { name: '花', desc: '花是植物的繁殖器官，吸引昆蟲授粉。' }
-      ];
-      const part = parts[Math.floor(Math.random() * parts.length)];
-      info.innerText = `${part.name}：${part.desc}`;
-    });
-  </script>
+viewer.addEventListener('click', () => {
+const parts = [
+{ name: '葉子', desc: '葉子是進行光合作用的重要器官。' },
+{ name: '根', desc: '根負責吸收水分與養分。' },
+{ name: '莖', desc: '莖支撐植物並輸送水分與營養。' }
+];
+const part = parts[Math.floor(Math.random() * parts.length)];
+info.innerText = `${part.name}：${part.desc}`;
+});
+</script>
 </body>
 </html>
